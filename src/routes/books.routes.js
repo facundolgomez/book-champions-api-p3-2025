@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { Book } from "../models/Book.js";
 
 const router = Router();
 
-router.get("/books", (req, res) => {
-  res.send("Obteniendo libros");
+router.get("/books", async (req, res) => {
+  const books = await Book.findAll();
+  res.json(books);
 });
 
 router.get("/books/:id", (req, res) => {
@@ -11,7 +13,7 @@ router.get("/books/:id", (req, res) => {
   res.send(`Obteniendo libro con el id ${id} `);
 });
 
-router.post("/books/:id", (req, res) => {
+router.post("/books", (req, res) => {
   res.send("Creando libro");
 });
 
