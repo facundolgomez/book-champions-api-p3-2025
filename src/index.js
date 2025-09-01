@@ -1,13 +1,14 @@
 import express from "express";
 import { PORT } from "./config.js";
-import bookRoutes from "./routes/books.routes.js";
+import router from "./routes/books.routes.js";
 import { sequelize } from "../db.js";
 import { Book } from "./models/Book.js";
 const app = express();
 
 try {
+  app.use(express.json());
   app.listen(PORT);
-  app.use(bookRoutes);
+  app.use(router);
 
   await sequelize.sync();
 
