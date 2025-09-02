@@ -22,7 +22,7 @@ export const createBook = async (req, res) => {
     req.body;
 
   if (!title || !author) {
-    res
+    return res
       .status(400)
       .send({ message: "Los campos titulo y autor son requeridos" });
   }
@@ -45,7 +45,7 @@ export const updateBook = async (req, res) => {
     req.body;
 
   if (!title || !author) {
-    res
+    return res
       .status(400)
       .send({ message: "Los campos titulo y autor son requeridos" });
   }
